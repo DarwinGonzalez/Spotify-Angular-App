@@ -12,10 +12,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private _spotifyService: SpotifyService) {
     this._spotifyService.getNewReleases()
-      .subscribe( (data: any) => {
-        this.newReleases = data.albums.items;
-      }
-      )
+      .subscribe( data => this.newReleases = data);
   }
 
   ngOnInit() {}
