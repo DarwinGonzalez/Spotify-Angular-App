@@ -10,6 +10,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class SearchComponent implements OnInit {
 
   private artists: any = [];
+  public loading: boolean;
 
   constructor(private _spotifyService: SpotifyService) { }
 
@@ -17,6 +18,10 @@ export class SearchComponent implements OnInit {
   }
 
   find(term: string) {
-    this._spotifyService.getArtist(term).subscribe( data => this.artists = data);
+    this.loading = true;
+    this._spotifyService.getArtist(term).subscribe( data => {
+      this.artists = data
+      this.loading = false;
+    });
   }
 }

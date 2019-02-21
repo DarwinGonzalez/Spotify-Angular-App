@@ -3,5 +3,5 @@
     <input #term type="text" (keyup)="find(term.value)" class="form-control" placeholder="Find arstist">
   </div>
 </div>
-
-<app-cards [items]="artists"></app-cards>
+<app-loading *ngIf="loading" class="m-5"></app-loading>
+<app-cards *ngIf="!loading" [items]="artists"></app-cards>
