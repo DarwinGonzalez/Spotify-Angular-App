@@ -6,7 +6,7 @@
   <div class="col">
     <h3>{{ artist.name }}</h3>
     <p>
-      <a href="artist.external_urls.spotify" target="_blank">Go to the artist page</a>
+      <a [href]="artist.external_urls.spotify" target="_blank">Go to the artist page</a>
     </p>
   </div>
   <div class="col-4 text-right">
@@ -16,7 +16,7 @@
 
 <div class="row m-5">
   <div class="col">
-    <table class="table">
+    <table class="table text-white">
       <thead>
         <tr>
           <th>Photo</th>

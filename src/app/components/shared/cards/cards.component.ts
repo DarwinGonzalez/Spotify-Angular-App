@@ -9,19 +9,22 @@ import { Router } from '@angular/router';
 export class CardsComponent implements OnInit {
 
   @Input() items: any[] = [];
+
   constructor(private _router: Router) { }
 
   ngOnInit() {
   }
 
   seeArtist(item: any) {
+    console.log(item);
     let artistId;
     if (item.type === 'artist') {
       artistId = item.id;
+      console.log(artistId);
     } else {
-      artistId = item.artist[0].id;
+      artistId = item.artists[0].id;
+      console.log(artistId);
     }
-    console.log(artistId);
     this._router.navigate([ '/artist', artistId ]);
   }
 

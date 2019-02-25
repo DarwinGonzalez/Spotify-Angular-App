@@ -8,7 +8,7 @@ import { SpotifyService } from 'src/app/services/spotify.service';
   styles: []
 })
 export class ArtistComponent implements OnInit {
-  
+
   public artist: any = {};
   public topTracks: any = {};
   public loadingArtist: boolean;
@@ -18,12 +18,13 @@ export class ArtistComponent implements OnInit {
     private _spotifyService: SpotifyService
     ) {
       this.loadingArtist = true;
-    this._router.params.subscribe( params => {
+      this._router.params.subscribe( params => {
       console.log(params['id']);
-      this.artist = this.getArtist(params['id']);
-      this.topTracks = this.getTopTracks(params['id']);
+      this.getArtist(params['id']);
+      this.getTopTracks(params['id']);
       this.loadingArtist = false;
     });
+    console.log(this.artist)
   }
 
   ngOnInit() {
@@ -33,14 +34,14 @@ export class ArtistComponent implements OnInit {
     this.loadingArtist = true;
     this._spotifyService.getArtist(id)
       .subscribe(artist => {
-        console.log(artist);
+        this.artist = artist;
       });
   }
 
   getTopTracks(id: string) {
     this._spotifyService.getTopTracks(id)
       .subscribe( topTracks => {
-        console.log(topTracks);
+        this.topTracks = topTracks;
       });
   }
 }
